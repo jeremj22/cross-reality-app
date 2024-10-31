@@ -35,8 +35,6 @@ public class ToggleWorlds : MonoBehaviour
             OnToggle(value);
         }
     }
-
-    private bool _prevDown = false;
     
     void Awake()
     {
@@ -44,6 +42,8 @@ public class ToggleWorlds : MonoBehaviour
         _camera = Camera.main;
         _passthrough = FindObjectOfType<OVRPassthroughLayer>();
         _roomTracker = FindAnyObjectByType<MRUK>();
+
+        _roomTracker.RoomCreatedEvent.AddListener(_ => SetVisibilities(_isVirtual));
     }
 
     // Update is called once per frame
@@ -55,11 +55,13 @@ public class ToggleWorlds : MonoBehaviour
             return;
         
         IsVirtual = !IsVirtual;
-        _prevDown = down;
     }
 
     public void ToggleVirtual()
         => IsVirtual = !IsVirtual;
+
+    private void SetVisibilities(bool isVirtual)
+        => _roomTracker.Rooms.Single().Anchors.ForEach(a => a.gameObject.SetActive(isVirtual));
 
     void OnToggle(bool isVirtual)
     {
@@ -67,6 +69,6 @@ public class ToggleWorlds : MonoBehaviour
         _camera.clearFlags = isVirtual ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
         _passthrough.overlayType = isVirtual ? OVROverlay.OverlayType.None : OVROverlay.OverlayType.Underlay;
 
-        _roomTracker.Rooms.Single().Anchors.ForEach(a => a.enabled = isVirtual);
+        SetVisibilities(isVirtual);
     }
 }
