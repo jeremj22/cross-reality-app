@@ -6503,11 +6503,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25e418dc3757e049b5f8bb5ffb5dcc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _button: 4
-  _controller: 32
   _manager: {fileID: 0}
   _camera: {fileID: 0}
   _passthrough: {fileID: 0}
+  _roomTracker: {fileID: 0}
 --- !u!4 &1252721733
 Transform:
   m_ObjectHideFlags: 0
