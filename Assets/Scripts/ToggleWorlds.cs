@@ -67,6 +67,7 @@ public class ToggleWorlds : MonoBehaviour
     {
         _manager.isInsightPassthroughEnabled = !isVirtual;
         _camera.clearFlags = isVirtual ? CameraClearFlags.Skybox : CameraClearFlags.SolidColor;
+        _camera.backgroundColor = Color.clear;
         _passthrough.overlayType = isVirtual ? OVROverlay.OverlayType.None : OVROverlay.OverlayType.Underlay;
 
         SetVisibilities(isVirtual);
