@@ -18,7 +18,7 @@ namespace Assets.Scripts
                 EastWestDegrees = (float)((value.TotalHours - 6) * HoursToDegreesMultiplier);
             }
         }
-
+        
         public float TimeHours
         {
             get => (float)Time.TotalHours;
@@ -30,10 +30,11 @@ namespace Assets.Scripts
             get => EastWestDegrees;
             set => Time = DetermineTime(value);
         }
-
+        
         private Vector3 _eulers;
 
-        /// <summary>Internal utility method. Use <see cref="TimeDegrees"/></summary>
+        /// <summary>Internal utility method</summary>
+        /// <remarks>Use <see cref="TimeDegrees"/> if you also want <see cref="Time"/> to be updated</remarks>
         private float EastWestDegrees
         {
             get => _eulers.x;
