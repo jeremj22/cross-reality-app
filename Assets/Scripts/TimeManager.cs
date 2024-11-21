@@ -15,17 +15,17 @@ namespace Assets.Scripts
             set
             {
                 _time = value;
-                EastWestDegrees = (value.TotalHours - 6) * HoursToDegreesMultiplier;
+                EastWestDegrees = (float)((value.TotalHours - 6) * HoursToDegreesMultiplier);
             }
         }
 
-        public double TimeHours
+        public float TimeHours
         {
-            get => Time.TotalHours;
+            get => (float)Time.TotalHours;
             set => Time = TimeSpan.FromHours(value);
         }
 
-        public double TimeDegrees
+        public float TimeDegrees
         {
             get => EastWestDegrees;
             set => Time = DetermineTime(value);
@@ -34,17 +34,17 @@ namespace Assets.Scripts
         private Vector3 _eulers;
 
         /// <summary>Internal utility method. Use <see cref="TimeDegrees"/></summary>
-        private double EastWestDegrees
+        private float EastWestDegrees
         {
             get => _eulers.x;
             set
             {
-                _eulers.x = (float)value;
+                _eulers.x = value;
                 transform.eulerAngles = _eulers;
             }
         }
 
-        private TimeSpan DetermineTime(double degrees)
+        private TimeSpan DetermineTime(float degrees)
         {
             double hours = degrees * DegreeToHoursMultiplier + 6;
 
