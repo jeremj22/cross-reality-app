@@ -31,19 +31,16 @@ namespace Assets.Scripts
             set => Time = DetermineTime(value);
         }
 
-        [SerializeField]
-        private Light _light;
+        private Vector3 _eulers;
 
         /// <summary>Internal utility method. Use <see cref="TimeDegrees"/></summary>
         private double EastWestDegrees
         {
-            get => _light.transform.eulerAngles.x;
+            get => _eulers.x;
             set
             {
-                var angles = _light.transform.eulerAngles;
-                angles.x = (float)value;
-
-                _light.transform.eulerAngles = angles;
+                _eulers.x = (float)value;
+                transform.eulerAngles = _eulers;
             }
         }
 
@@ -59,7 +56,7 @@ namespace Assets.Scripts
 
         void Awake()
         {
-            _light = gameObject.GetComponent<Light>();
+            _eulers = transform.eulerAngles;
 
             Time = DetermineTime();
             Debug.Log($"Current Unity time: {Time}");
