@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4832026368209588523}
+  - component: {fileID: 6534341476215741463}
   m_Layer: 6
   m_Name: Wallprefab
   m_TagString: Untagged
@@ -32,6 +33,18 @@ Transform:
   - {fileID: 7165317606081821290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6534341476215741463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002147597868734503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8aaea2a1dba5254db9e4a1ef479183d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4173833190889808662
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +74,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.01}
+  m_LocalScale: {x: 1, y: 1, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4832026368209588523}
@@ -94,7 +107,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f487fbd00f02df1499d6144b45dd52b6, type: 2}
+  - {fileID: 586645097001841572, guid: 64feedadf4bac8f469c81775e8a7dd92, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
