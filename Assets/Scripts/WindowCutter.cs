@@ -1,10 +1,6 @@
 using Meta.XR.MRUtilityKit;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Parabox.CSG;
-using UnityEditor.Rendering.CustomRenderTexture.ShaderGraph;
-using Meta.WitAi;
+using UnityEngine;
 
 public class WindowCutter : MonoBehaviour
 {
@@ -18,21 +14,20 @@ public class WindowCutter : MonoBehaviour
         MRUKAnchor wallAnchor = wallObject.GetComponent<MRUKAnchor>();
         foreach (MRUKAnchor childAnchor in wallAnchor.ChildAnchors)
         {
-            GameObject windowObj = childAnchor.gameObject;
-            GameObject windowprefab = windowObj.transform.GetChild(0).gameObject;
+            GameObject windowprefab = childAnchor.transform.GetChild(0).gameObject;
             GameObject windowCube = windowprefab.transform.GetChild(0).gameObject;
 
             Model subtraction = CSG.Subtract(wallCube, windowCube);
 
-            var composite = new GameObject();
+            var composite = new GameObject("WindowCut");
             composite.AddComponent<MeshFilter>().sharedMesh = subtraction.mesh;
             composite.AddComponent<MeshRenderer>().sharedMaterials = subtraction.materials.ToArray();
 
-            Destroy(wallCube.gameObject);
-            Destroy(windowCube.gameObject);
+            Destroy(wallCube);
+            Destroy(windowCube);
             composite.transform.SetParent(this.transform);
 
-            wallCube = this.transform.GetChild(1).gameObject;
+            wallCube = composite;
         }
 
     }
