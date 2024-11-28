@@ -1,5 +1,6 @@
 using Meta.XR.MRUtilityKit;
 using Parabox.CSG;
+using System.Linq;
 using UnityEngine;
 
 public class WindowCutter : MonoBehaviour
@@ -12,7 +13,7 @@ public class WindowCutter : MonoBehaviour
         GameObject wallObject = this.transform.parent.gameObject;
         GameObject wallCube = this.transform.GetChild(0).gameObject;
         MRUKAnchor wallAnchor = wallObject.GetComponent<MRUKAnchor>();
-        foreach (MRUKAnchor childAnchor in wallAnchor.ChildAnchors)
+        foreach (MRUKAnchor childAnchor in wallAnchor.ChildAnchors.Where(IsWindow))
         {
             GameObject windowprefab = childAnchor.transform.GetChild(0).gameObject;
             GameObject windowCube = windowprefab.transform.GetChild(0).gameObject;
@@ -31,5 +32,8 @@ public class WindowCutter : MonoBehaviour
         }
 
     }
+
+    private static bool IsWindow(MRUKAnchor anchor)
+        => anchor.Label == MRUKAnchor.SceneLabels.WINDOW_FRAME;
 
 }
