@@ -36,7 +36,10 @@ public class ToggleWorlds : MonoBehaviour, IActiveState
             OnToggle(value);
         }
     }
-
+    
+    /// <summary>
+    /// Implement interface and pass along virtuallity to disable TP in AR
+    /// </summary>
     public bool Active => IsVirtual;
 
     void Awake()
