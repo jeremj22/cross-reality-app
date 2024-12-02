@@ -625,7 +625,7 @@ MonoBehaviour:
   <RoomRemovedEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  EnableWorldLock: 1
+  EnableWorldLock: 0
   SceneSettings:
     DataSource: 2
     RoomIndex: -1
