@@ -138,3 +138,12 @@ MonoBehaviour:
     Scaling: 0
     Alignment: 0
     IgnorePrefabSize: 1
+  - Labels: 64
+    Prefabs:
+    - {fileID: 1002147597868734503, guid: ae46e397f2e494946a8a450a9f5c0643, type: 3}
+    PrefabSelection: 0
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 0
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
