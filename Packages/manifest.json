@@ -2,6 +2,8 @@
   "dependencies": {
     "co.parabox.csg": "file:D:/MR Group Winter 2024/pb_CSG-master",
     "com.meta.xr.sdk.all": "69.0.1",
+    "com.unity.cloud.draco": "5.1.8",
+    "com.unity.cloud.gltfast": "6.9.0",
     "com.unity.collab-proxy": "2.3.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.mobile.android-logcat": "1.4.3",
