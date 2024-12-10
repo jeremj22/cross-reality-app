@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.075
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2096209392}
-  m_IndirectSpecularColor: {r: 0.013521285, g: 0.01692856, b: 0.023019215, a: 0.075}
+  m_IndirectSpecularColor: {r: 0.18029113, g: 0.22572407, b: 0.3069303, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3334,7 +3334,7 @@ MonoBehaviour:
   <RoomRemovedEvent>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  EnableWorldLock: 1
+  EnableWorldLock: 0
   SceneSettings:
     DataSource: 2
     RoomIndex: -1
@@ -3394,6 +3394,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1091925705092531394, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+      propertyPath: _activeState
+      value: 
+      objectReference: {fileID: 382556655172973159}
     - target: {fileID: 2655074173404857322, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
       propertyPath: m_Name
       value: '[BuildingBlock] Camera Rig'
@@ -3441,8 +3445,43 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7729240252344149297, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 382556655172973159}
   m_SourcePrefab: {fileID: 100100000, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+--- !u!114 &382556655172973157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6722691442013493680, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+  m_PrefabInstance: {fileID: 382556655172973156}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382556655172973158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 592ac3f1a010f3d48970c5beb7e4f68f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &382556655172973158 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7729240252344149297, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+  m_PrefabInstance: {fileID: 382556655172973156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &382556655172973159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382556655172973158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd5da9a8bd22243b407f1927f4965b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeStates:
+  - {fileID: 382556655172973157}
+  - {fileID: 1252721732}
+  _logicOperator: 0
 --- !u!1001 &6842438482818909502
 PrefabInstance:
   m_ObjectHideFlags: 0
