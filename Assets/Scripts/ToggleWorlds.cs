@@ -1,8 +1,9 @@
 using Meta.XR.MRUtilityKit;
+using Oculus.Interaction;
 using System.Linq;
 using UnityEngine;
 
-public class ToggleWorlds : MonoBehaviour
+public class ToggleWorlds : MonoBehaviour, IActiveState
 {
     [SerializeField, Tooltip("Default: Three (X)")]
     private OVRInput.Button _button = OVRInput.Button.Three;
@@ -36,6 +37,11 @@ public class ToggleWorlds : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Implement interface and pass along virtuallity to disable TP in AR
+    /// </summary>
+    public bool Active => IsVirtual;
+
     void Awake()
     {
         _manager = FindObjectOfType<OVRManager>();
