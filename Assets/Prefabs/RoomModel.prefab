@@ -102,20 +102,12 @@ MonoBehaviour:
   SpawnOnStart: 1
   SeedValue: 0
   PrefabsToSpawn:
-  - Labels: 16
-    Prefabs:
-    - {fileID: 5318935707899829193, guid: 664e9d60ad13a044a874afc8f1bb0270, type: 3}
-    PrefabSelection: 0
-    MatchAspectRatio: 1
-    CalculateFacingDirection: 1
-    Scaling: 0
-    Alignment: 0
-    IgnorePrefabSize: 0
   - Labels: 8
     Prefabs:
-    - {fileID: 4335082354087028266, guid: de45ed43f5907d44980f948c9c00958b, type: 3}
-    PrefabSelection: 0
-    MatchAspectRatio: 0
+    - {fileID: 8919934127225428127, guid: 2c22be1ed3e02d74281f20af1e168c4c, type: 3}
+    - {fileID: -8098169881513260187, guid: c8eaafd7fddd9204eb9107f436258328, type: 3}
+    PrefabSelection: 2
+    MatchAspectRatio: 1
     CalculateFacingDirection: 1
     Scaling: 0
     Alignment: 0
@@ -124,8 +116,8 @@ MonoBehaviour:
     Prefabs:
     - {fileID: 1002147597868734503, guid: fa032e6d6c57fdc4ca5e7e43a76abbd6, type: 3}
     PrefabSelection: 0
-    MatchAspectRatio: 0
-    CalculateFacingDirection: 1
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 0
     Scaling: 0
     Alignment: 0
     IgnorePrefabSize: 0
@@ -144,6 +136,66 @@ MonoBehaviour:
     PrefabSelection: 0
     MatchAspectRatio: 1
     CalculateFacingDirection: 0
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
+  - Labels: 1024
+    Prefabs:
+    - {fileID: 4879613652504915760, guid: 018d4bc6e415ea14e9cce9d5301287c6, type: 3}
+    PrefabSelection: 0
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 1
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
+  - Labels: 16
+    Prefabs:
+    - {fileID: -3076414549848122142, guid: 4566ec837bb8d314e85938835e0131ea, type: 3}
+    PrefabSelection: 0
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 1
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
+  - Labels: 256
+    Prefabs:
+    - {fileID: -3076414549848122142, guid: 0578576916b91434e988886ea46de55a, type: 3}
+    - {fileID: 8919934127225428127, guid: b5c98da9a0bb2184bb17743438a9eb37, type: 3}
+    - {fileID: 2107409826236812522, guid: 1267592a5475df9489dd49c467f21201, type: 3}
+    - {fileID: 8919934127225428127, guid: d1656521c128a1f4090c4d90b2ec66f1, type: 3}
+    - {fileID: -7590605465253766381, guid: ed08d2e5de33cb042b6619e560354e60, type: 3}
+    - {fileID: -8098169881513260187, guid: b4d8ac61d519be946ae767d94234c816, type: 3}
+    PrefabSelection: 2
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 1
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
+  - Labels: 4096
+    Prefabs:
+    - {fileID: 5330729063424889521, guid: 4f26040b7a6857c48b89536e6fc7c3bc, type: 3}
+    - {fileID: -3076414549848122142, guid: e4badfebd9fa1f346a2d20d2df3f4c1b, type: 3}
+    - {fileID: 5330729063424889521, guid: cc84d75ab8b4f7840899bdd2c53fe701, type: 3}
+    - {fileID: -3076414549848122142, guid: 052e7e32137ae3d4d9d67307403443f2, type: 3}
+    - {fileID: -3076414549848122142, guid: 5f5bd0788581aab4b914472f9a8f0f37, type: 3}
+    PrefabSelection: 2
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 1
+    Scaling: 0
+    Alignment: 0
+    IgnorePrefabSize: 0
+  - Labels: 128
+    Prefabs:
+    - {fileID: -6049947492047879824, guid: ffbbf3b80501d8d49a8a4e0609bdaff5, type: 3}
+    - {fileID: 8771091787928289351, guid: 8dd3ef1a3badeec4986cfdda05eaa152, type: 3}
+    - {fileID: 3468509347135159920, guid: 0e09253fc18a1ab468625fbb4a22b247, type: 3}
+    - {fileID: -86517310442796866, guid: bcb9138f368d9544da409dce4b2befc3, type: 3}
+    - {fileID: -6049947492047879824, guid: 751bf57c2b815844e8604b8d21766ecc, type: 3}
+    - {fileID: -746079447478585731, guid: 6fe37b97525672d49b5364a7c2eb4a6e, type: 3}
+    - {fileID: -6049947492047879824, guid: cd73679ae34a43b4d9bb0a10ce5d1e41, type: 3}
+    PrefabSelection: 2
+    MatchAspectRatio: 1
+    CalculateFacingDirection: 1
     Scaling: 0
     Alignment: 0
     IgnorePrefabSize: 0
