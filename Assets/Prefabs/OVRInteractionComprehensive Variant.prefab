@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419531387731152844, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
+      propertyPath: _interactors.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1419531388047995569, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
       propertyPath: _interactors.Array.size
       value: 1
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: _interactors.Array.data[3]
       value: 
       objectReference: {fileID: 3828999884513552407}
+    - target: {fileID: 7987731769533924840, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
+      propertyPath: _broadcasters.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7987731769749780629, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
       propertyPath: _broadcasters.Array.data[0]
       value: 
@@ -72,6 +80,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 359152013983159347, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
     - {fileID: 5011963131725433120, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
+    - {fileID: 6511503730303957518, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 314f6e1da20902f4ba50509fa6eb8fa8, type: 3}
