@@ -1,4 +1,3 @@
-Todo:
 - [ ] Remove Boundary (blue circle)
 - [ ] Attach UI to camera
 - [ ] Add additional prefabs for manual positioning
