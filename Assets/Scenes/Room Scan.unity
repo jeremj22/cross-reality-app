@@ -154,17 +154,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: 8
---- !u!114 &386051883 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8337029153736546322, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+--- !u!1 &230859399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8016471694141895703, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
   m_PrefabInstance: {fileID: 382556655172973156}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &386051887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230859399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a56054f6e3838f4e85dce4e71979800, type: 3}
+  m_Script: {fileID: 11500000, guid: 67fb2ae006d618c4180efcabc2481fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activeState: {fileID: 1252721732}
 --- !u!4 &849782101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7040822614291826552, guid: 5628483ee1615c944955f5c44829fa24, type: 3}
@@ -803,15 +810,11 @@ PrefabInstance:
     - target: {fileID: 5978965926874139883, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
       propertyPath: _activeStates.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7076774375581163564, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
-      propertyPath: _activeStates.Array.size
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 386051887}
     - target: {fileID: 7076774375581163564, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
       propertyPath: _activeStates.Array.data[0]
       value: 
-      objectReference: {fileID: 386051883}
+      objectReference: {fileID: 386051887}
     m_RemovedComponents:
     - {fileID: 6722691442013493680, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
     - {fileID: 3625263704970602782, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
@@ -828,6 +831,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7729240252344149297, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 382556655172973161}
+    - targetCorrespondingSourceObject: {fileID: 8016471694141895703, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 386051887}
     - targetCorrespondingSourceObject: {fileID: 5863480180341944590, guid: 1874629538c8e4541a389160bb6884d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 73884347}
