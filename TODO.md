@@ -3,7 +3,7 @@
 - [ ] Add additional prefabs for manual positioning
     - especially Lamps & Walls with Windows
 - [ ] Scalable walls
-- [ ] Teleport Keybind
+- [x] Teleport Keybind
 - [ ] Poster
 - [ ] Environment
 - [ ] Fix Windows

@@ -14,4 +14,4 @@ This repo uses git submodules. Update them with `git submodule update --init --r
 | Right Joystick        | Move Objects              |
 | Right Trigger			| Place Object              |
 | X                     | Switch between AR and VR  |
-| Y                     | Teleport (TODO)           |
+| Y                     | Teleport					|
