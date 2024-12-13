@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,21 +8,35 @@ public class PlaceLightSource : MonoBehaviour
     [SerializeField, Tooltip("Default: SecondaryIndexTrigger")]
     private OVRInput.Button _button = OVRInput.Button.SecondaryIndexTrigger;
     private OVRInput.Button _deletebutton = OVRInput.Button.Two;
-
-
-    /// <summary>Defaults to correct amount of nulls</summary>
-    public List<GameObject> Previews = new() { null, null, null };
-
-    private PreviewType _type = PreviewType.Light;
-    public PreviewType Type
+    
+    // would like to expose this to the editor but there's no way to force it through the setter
+    private float _scaleFactor = 1;
+    public float ScaleFactor
     {
-        get => _type;
+        get => _scaleFactor;
         set
         {
-            if (_type == value) return;
+            _scaleFactor = Math.Max(value, 0);
+            objectPreview[0].transform.localScale = Scale;
+        }
+    }
+    
+    private Vector3 BaseScale => objectprefab.transform.localScale;
+    public Vector3 Scale => BaseScale * ScaleFactor;
 
-            _type = value;
-            changeSpawnobject((int)value);
+    /// <summary>Defaults to correct amount of nulls</summary>
+    public List<GameObject> PreviewPrefabs = new() { null, null, null };
+
+    private int _previewIndex = 0;
+    public int PreviewIndex
+    {
+        get => _previewIndex;
+        set
+        {
+            if (_previewIndex == value) return;
+
+            _previewIndex = value;
+            changeSpawnobject(value);
         }
     }
 
@@ -51,7 +66,7 @@ public class PlaceLightSource : MonoBehaviour
         objectPreview = new GameObject[2];
         spawnedObjects = new GameObject[100];
 
-        objectprefab = Previews[0];
+        objectprefab = PreviewPrefabs[0];
         line = Instantiate(rayLinePrefab);
         cursorP = Instantiate(cursor);
         line.positionCount = 2;
@@ -140,9 +155,8 @@ public class PlaceLightSource : MonoBehaviour
         }
         else if (joystickLeft.y != 0)
         {
-            // TODO: manipulate scale here instead
-            Quaternion curRot = objectPreview[0].transform.rotation;
-            objectPreview[0].transform.rotation = curRot * Quaternion.Euler(0, 5 * joystickLeft.x, 0);
+            // TODO: find fitting factor
+            ScaleFactor += joystickLeft.y * 0.05f;
         }
     }
     public void FloatingOff()
@@ -153,7 +167,7 @@ public class PlaceLightSource : MonoBehaviour
     public void FloatingOn()
     {
         floating = true;
-        objectprefab = Previews[0];
+        objectprefab = PreviewPrefabs[0];
     }
 
     public void InstantiateObject(Transform trans)
@@ -170,7 +184,7 @@ public class PlaceLightSource : MonoBehaviour
     public void changeSpawnobject(int objectid)
     {
         Destroy(objectPreview[0]);
-        objectprefab = Previews[objectid];
+        objectprefab = PreviewPrefabs[objectid];
 
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
 
@@ -179,12 +193,5 @@ public class PlaceLightSource : MonoBehaviour
             Vector3 inc = objectPreview[0].transform.position;
             objectPreview[0].transform.position = new Vector3(inc.x, inc.y + 0.8f, inc.z);
         }
-    }
-
-    public enum PreviewType
-    {
-        Light = 0,
-        Table = 1,
-        Wall = 2,
     }
 }
