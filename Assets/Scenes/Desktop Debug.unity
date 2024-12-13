@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 717638873}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18029113, g: 0.22572407, b: 0.3069303, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -383,7 +383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &777769879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -695,6 +695,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56b95fe8a62f27741b2c474d6c31ea9f, type: 3}
+--- !u!114 &1361227794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5831774467389539547, guid: 56b95fe8a62f27741b2c474d6c31ea9f, type: 3}
+  m_PrefabInstance: {fileID: 1361227793}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c065bff6f42fe04fab2108addacbcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1407466774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -730,6 +741,26 @@ PrefabInstance:
     - target: {fileID: 1143440254340668912, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589410251167883282, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589410251167883282, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589410251167883282, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360213572146235512, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2360213572146235512, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2539105012633480488, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
       propertyPath: m_AnchorMax.x
@@ -798,6 +829,30 @@ PrefabInstance:
     - target: {fileID: 4754411959606029724, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_MaxValue
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1361227794}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_ScaleFactor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlaceLightSource, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586390283027554873, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6120682674266113629, guid: 3ac8ed943d408d14db68021518d4a265, type: 3}
       propertyPath: m_Name
