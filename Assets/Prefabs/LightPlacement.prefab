@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: 2097152
-  Previews:
+  PreviewPrefabs:
   - {fileID: 6934126574598063760, guid: 94716e74a91af6f4982ad656c26380fd, type: 3}
   - {fileID: 4335082354087028266, guid: de45ed43f5907d44980f948c9c00958b, type: 3}
   - {fileID: 1002147597868734503, guid: fa032e6d6c57fdc4ca5e7e43a76abbd6, type: 3}
