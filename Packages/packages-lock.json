@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "co.parabox.csg": {
-      "version": "file:D:/MR Group Winter 2024/pb_CSG-master",
+      "version": "file:co.parabox.csg",
       "depth": 0,
-      "source": "local",
+      "source": "embedded",
       "dependencies": {}
     },
     "com.meta.xr.mrutilitykit": {
