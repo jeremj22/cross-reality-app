@@ -2,7 +2,7 @@
 - [ ] Attach UI to camera
 - [ ] Add additional prefabs for manual positioning
     - especially Lamps & Walls with Windows
-- [ ] Scalable walls
+- [x] Scalable walls
 - [x] Teleport Keybind
 - [ ] Poster
 - [ ] Environment

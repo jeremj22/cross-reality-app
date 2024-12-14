@@ -1,11 +1,6 @@
-using Meta.WitAi;
-using Meta.WitAi.Utilities;
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlaceLightSource : MonoBehaviour
 {
@@ -13,13 +8,38 @@ public class PlaceLightSource : MonoBehaviour
     [SerializeField, Tooltip("Default: SecondaryIndexTrigger")]
     private OVRInput.Button _button = OVRInput.Button.SecondaryIndexTrigger;
     private OVRInput.Button _deletebutton = OVRInput.Button.Two;
-    
 
+    // would like to expose this to the editor but there's no way to force it through the setter
+    private float _scaleFactor = 1;
+    public float ScaleFactor
+    {
+        get => _scaleFactor;
+        set
+        {
+            _scaleFactor = Math.Max(value, 0);
+            objectPreview[0].transform.localScale = Scale;
+        }
+    }
 
-    [SerializeField]
-    public GameObject lightprefab;
-    public GameObject tableprefab;
-    public GameObject wallprefab;
+    private Vector3 BaseScale => objectprefab.transform.localScale;
+    public Vector3 Scale => BaseScale * ScaleFactor;
+
+    /// <summary>Defaults to correct amount of nulls</summary>
+    public List<GameObject> PreviewPrefabs = new() { null, null, null };
+
+    private int _previewIndex = 0;
+    public int PreviewIndex
+    {
+        get => _previewIndex;
+        set
+        {
+            if (_previewIndex == value) return;
+
+            _previewIndex = value;
+            changeSpawnobject(value);
+        }
+    }
+
     private GameObject objectprefab;
     public LineRenderer rayLinePrefab;
     public Transform origin;
@@ -44,7 +64,7 @@ public class PlaceLightSource : MonoBehaviour
         objectPreview = new GameObject[2];
         spawnedObjects = new GameObject[100];
 
-        objectprefab = lightprefab;
+        objectprefab = PreviewPrefabs[0];
         line = Instantiate(rayLinePrefab);
         line.positionCount = 2;
         allColliders = Physics.OverlapSphere(origin.position, 200);
@@ -56,7 +76,8 @@ public class PlaceLightSource : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (floating){
+        if (floating)
+        {
             UpdateFloatingPlacement();
         }
         else
@@ -74,7 +95,7 @@ public class PlaceLightSource : MonoBehaviour
         }
     }
 
-    public void UpdateFloatingPlacement() 
+    public void UpdateFloatingPlacement()
     {
         line.SetPosition(0, origin.position);
         Vector3 endpoint = origin.position + origin.forward * startDist;
@@ -120,10 +141,14 @@ public class PlaceLightSource : MonoBehaviour
         }
 
         Vector2 joystickLeft = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-        if (joystickLeft.x != 0)
+        if (joystickLeft.x != 0 && Math.Abs(joystickLeft.x) > Math.Abs(joystickLeft.y))
         {
             Quaternion curRot = objectPreview[0].transform.rotation;
-            objectPreview[0].transform.rotation = curRot * Quaternion.Euler(0,5*joystickLeft.x,0);
+            objectPreview[0].transform.rotation = curRot * Quaternion.Euler(0, 4 * joystickLeft.x, 0);
+        }
+        else if (joystickLeft.y != 0)
+        {
+            ScaleFactor += joystickLeft.y * 0.04f;
         }
     }
     public void FloatingOff()
@@ -134,16 +159,20 @@ public class PlaceLightSource : MonoBehaviour
     public void FloatingOn()
     {
         floating = true;
-        objectprefab = lightprefab;
+        objectprefab = PreviewPrefabs[0];
     }
 
     public void InstantiateObject(Transform trans)
     {
         if (objectprefab != null)
-        { 
+        {
             Vector3 pos = trans.position;
-            trans.GetLocalPositionAndRotation(out Vector3 posloc,out Quaternion rot); 
-            spawnedObjects[spawnedobjectcounter] = Instantiate(objectprefab,pos,rot);
+            trans.GetLocalPositionAndRotation(out Vector3 posloc, out Quaternion rot);
+
+            var spawned = Instantiate(objectprefab, pos, rot);
+            spawned.transform.localScale *= ScaleFactor;
+
+            spawnedObjects[spawnedobjectcounter] = spawned;
             spawnedobjectcounter++;
         }
     }
@@ -151,19 +180,8 @@ public class PlaceLightSource : MonoBehaviour
     public void changeSpawnobject(int objectid)
     {
         Destroy(objectPreview[0]);
-        switch (objectid)
-        {
-            case 0:
-                objectprefab = lightprefab;
-                break;
-            case 1:
-                objectprefab = tableprefab;
-                break;
-            case 2:
-                objectprefab = wallprefab;
-                break;
-        }
-        
+        objectprefab = PreviewPrefabs[objectid];
+
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
     }
 }
