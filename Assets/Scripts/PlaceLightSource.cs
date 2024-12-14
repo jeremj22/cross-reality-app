@@ -41,7 +41,6 @@ public class PlaceLightSource : MonoBehaviour
     }
 
     private GameObject objectprefab;
-    public GameObject cursor;
     public LineRenderer rayLinePrefab;
     public Transform origin;
     public float startDist = 0.1f;
@@ -51,7 +50,6 @@ public class PlaceLightSource : MonoBehaviour
     public bool floating = true;
 
     private LineRenderer line;
-    private GameObject cursorP;
     private Collider[] allColliders;
     private GameObject[] lightsources;
 
@@ -68,13 +66,10 @@ public class PlaceLightSource : MonoBehaviour
 
         objectprefab = PreviewPrefabs[0];
         line = Instantiate(rayLinePrefab);
-        cursorP = Instantiate(cursor);
         line.positionCount = 2;
         allColliders = Physics.OverlapSphere(origin.position, 200);
         loc = new GameObject();
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
-        Vector3 inc = objectPreview[0].transform.position;
-        objectPreview[0].transform.position = new Vector3(inc.x, inc.y + 0.8f, inc.z);
         //objectPreview.SetActive(false);
     }
 
@@ -111,7 +106,6 @@ public class PlaceLightSource : MonoBehaviour
             endpoint = hit.point;
         }
 
-        //cursorP.transform.position = new Vector3(endpoint.x, endpoint.y, endpoint.z);
         line.SetPosition(1, endpoint);
 
         if (OVRInput.GetDown(_button))
@@ -131,7 +125,6 @@ public class PlaceLightSource : MonoBehaviour
         line.SetPosition(0, origin.position);
         Vector3 endpoint = origin.position + origin.forward * startDist;
         endpoint.y = 0;
-        //cursorP.transform.position = new Vector3(endpoint.x, endpoint.y, endpoint.z);
         line.SetPosition(1, endpoint);
 
         loc.transform.position = endpoint;
@@ -187,11 +180,5 @@ public class PlaceLightSource : MonoBehaviour
         objectprefab = PreviewPrefabs[objectid];
 
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
-
-        if (objectid != 0)
-        {
-            Vector3 inc = objectPreview[0].transform.position;
-            objectPreview[0].transform.position = new Vector3(inc.x, inc.y + 0.8f, inc.z);
-        }
     }
 }
