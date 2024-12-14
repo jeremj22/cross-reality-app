@@ -8,7 +8,7 @@ public class PlaceLightSource : MonoBehaviour
     [SerializeField, Tooltip("Default: SecondaryIndexTrigger")]
     private OVRInput.Button _button = OVRInput.Button.SecondaryIndexTrigger;
     private OVRInput.Button _deletebutton = OVRInput.Button.Two;
-    
+
     // would like to expose this to the editor but there's no way to force it through the setter
     private float _scaleFactor = 1;
     public float ScaleFactor
@@ -20,7 +20,7 @@ public class PlaceLightSource : MonoBehaviour
             objectPreview[0].transform.localScale = Scale;
         }
     }
-    
+
     private Vector3 BaseScale => objectprefab.transform.localScale;
     public Vector3 Scale => BaseScale * ScaleFactor;
 
@@ -169,7 +169,11 @@ public class PlaceLightSource : MonoBehaviour
         {
             Vector3 pos = trans.position;
             trans.GetLocalPositionAndRotation(out Vector3 posloc, out Quaternion rot);
-            spawnedObjects[spawnedobjectcounter] = Instantiate(objectprefab, pos, rot);
+
+            var spawned = Instantiate(objectprefab, pos, rot);
+            spawned.transform.localScale *= ScaleFactor;
+
+            spawnedObjects[spawnedobjectcounter] = spawned;
             spawnedobjectcounter++;
         }
     }
