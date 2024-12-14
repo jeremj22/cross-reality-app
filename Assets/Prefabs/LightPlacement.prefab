@@ -47,9 +47,8 @@ MonoBehaviour:
   _button: 2097152
   PreviewPrefabs:
   - {fileID: 6934126574598063760, guid: 94716e74a91af6f4982ad656c26380fd, type: 3}
-  - {fileID: 4335082354087028266, guid: de45ed43f5907d44980f948c9c00958b, type: 3}
+  - {fileID: 8919934127225428127, guid: 2c22be1ed3e02d74281f20af1e168c4c, type: 3}
   - {fileID: 1002147597868734503, guid: fa032e6d6c57fdc4ca5e7e43a76abbd6, type: 3}
-  cursor: {fileID: 875050727709095254, guid: 23009920539e5b94bbc5cb786a42812c, type: 3}
   rayLinePrefab: {fileID: 127319134060543663, guid: ef9f8799696727844a16abdc48ece169, type: 3}
   origin: {fileID: 0}
   startDist: 0.1
