@@ -141,15 +141,14 @@ public class PlaceLightSource : MonoBehaviour
         }
 
         Vector2 joystickLeft = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-        if (joystickLeft.x != 0 && joystickLeft.x > joystickLeft.y)
+        if (joystickLeft.x != 0 && Math.Abs(joystickLeft.x) > Math.Abs(joystickLeft.y))
         {
             Quaternion curRot = objectPreview[0].transform.rotation;
-            objectPreview[0].transform.rotation = curRot * Quaternion.Euler(0, 5 * joystickLeft.x, 0);
+            objectPreview[0].transform.rotation = curRot * Quaternion.Euler(0, 4 * joystickLeft.x, 0);
         }
         else if (joystickLeft.y != 0)
         {
-            // TODO: find fitting factor
-            ScaleFactor += joystickLeft.y * 0.05f;
+            ScaleFactor += joystickLeft.y * 0.04f;
         }
     }
     public void FloatingOff()
