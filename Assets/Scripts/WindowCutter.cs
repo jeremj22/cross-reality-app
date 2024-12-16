@@ -40,17 +40,17 @@ public class WindowCutter : MonoBehaviour
     private static bool IsWindow(MRUKAnchor anchor)
         => anchor.Label == MRUKAnchor.SceneLabels.WINDOW_FRAME;
     
-    private void FixPivot(GameObject target, Vector3 targetPivot)
+    private static void FixPivot(GameObject target, Vector3 targetPivot)
     {
         ProBuilderMesh pbMesh = target.AddComponent<ProBuilderMesh>();
 
-        var importer = new MeshImporter(gameObject);
+        var importer = new MeshImporter(target);
         importer.Import();
 
         Debug.Log("ProBuilderMesh successfully imported from Unity Mesh.");
 
         // Convert the target pivot from world space to local space
-        Vector3 localPivot = transform.InverseTransformPoint(targetPivot);
+        Vector3 localPivot = target.transform.InverseTransformPoint(targetPivot);
 
         // Apply the pivot using ProBuilderMesh's SetPivot method
         pbMesh.SetPivot(localPivot);
