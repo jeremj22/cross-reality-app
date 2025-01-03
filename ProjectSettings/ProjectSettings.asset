@@ -144,6 +144,8 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: ee87cfdf16a36471e81e2d9539483bac, type: 2}
+  - {fileID: 11400000, guid: cfd2cdedc6b5ef19baaf12ceabb4d797, type: 2}
+  - {fileID: 419528632193925461, guid: ba4da14525dc22047a5ed6f434c05e19, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -478,7 +480,7 @@ PlayerSettings:
   m_BuildTargetGroupLoadStoreDebugModeSettings: []
   m_BuildTargetNormalMapEncoding:
   - m_BuildTarget: Android
-    m_Encoding: 1
+    m_Encoding: 0
   - m_BuildTarget: iPhone
     m_Encoding: 1
   - m_BuildTarget: tvOS
