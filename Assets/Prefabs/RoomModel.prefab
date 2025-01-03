@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockId: b9d9309f-2bf0-40ca-9cee-803aa6a91dae
-  instanceId: 005e5c24-7e66-4abd-b79f-1595e1ae84bb
+  instanceId: ef6a17d5-2182-482f-a057-7f9b0021d17d
   version: 1
   installationRoutineCheckpoint:
     _installationRoutineId: 880093e4-1844-41da-9fb9-d806374e5308
@@ -151,7 +151,7 @@ MonoBehaviour:
   - Labels: 16
     Prefabs:
     - {fileID: -3076414549848122142, guid: 4566ec837bb8d314e85938835e0131ea, type: 3}
-    PrefabSelection: 2
+    PrefabSelection: 0
     MatchAspectRatio: 1
     CalculateFacingDirection: 1
     Scaling: 0

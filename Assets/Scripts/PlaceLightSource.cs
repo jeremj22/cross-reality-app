@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlaceLightSource : MonoBehaviour
@@ -70,6 +71,14 @@ public class PlaceLightSource : MonoBehaviour
         allColliders = Physics.OverlapSphere(origin.position, 200);
         loc = new GameObject();
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
+
+        objectPreview[0].layer = LayerMask.NameToLayer("Ignore Raycast");
+        //hope they have no recursive children...
+        for (int i = 0; i < objectPreview[0].transform.childCount; i++)
+        {
+            objectPreview[0].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+        objectPreview[0].transform.localScale *= ScaleFactor;
         //objectPreview.SetActive(false);
     }
 
@@ -85,12 +94,16 @@ public class PlaceLightSource : MonoBehaviour
             UpdateFloorPlacement();
         }
 
-        lightsources = GameObject.FindGameObjectsWithTag("Lightsource");
         if (OVRInput.GetDown(_deletebutton))
         {
-            foreach (GameObject l in lightsources)
+            RaycastHit hit;
+            GameObject obj;
+            if (Physics.Raycast(origin.position, origin.forward, out hit, startDist, LayerMask.GetMask("Default")))
             {
-                l.SetActive(false);
+                obj = hit.transform.GameObject();
+                if (obj.CompareTag("PlacedObj")){
+                    obj.SetActive(false);
+                }
             }
         }
     }
@@ -98,13 +111,13 @@ public class PlaceLightSource : MonoBehaviour
     public void UpdateFloatingPlacement()
     {
         line.SetPosition(0, origin.position);
+        //RaycastHit hit;
+        //if (Physics.Raycast(origin.position, origin.forward, out hit, startDist, LayerMask.GetMask("Default")))
+        //{
+        //    startDist = hit.distance;
+        //}
         Vector3 endpoint = origin.position + origin.forward * startDist;
         loc.transform.position = endpoint;
-        RaycastHit hit;
-        if (Physics.Raycast(origin.position, endpoint - origin.position, out hit, startDist))
-        {
-            endpoint = hit.point;
-        }
 
         line.SetPosition(1, endpoint);
 
@@ -123,6 +136,11 @@ public class PlaceLightSource : MonoBehaviour
     public void UpdateFloorPlacement()
     {
         line.SetPosition(0, origin.position);
+        //RaycastHit hit;
+        //if (Physics.Raycast(origin.position, origin.forward, out hit, startDist, LayerMask.GetMask("Default")))
+        //{
+        //    startDist = hit.distance;
+        //}
         Vector3 endpoint = origin.position + origin.forward * startDist;
         endpoint.y = 0;
         line.SetPosition(1, endpoint);
@@ -171,6 +189,7 @@ public class PlaceLightSource : MonoBehaviour
 
             var spawned = Instantiate(objectprefab, pos, rot);
             spawned.transform.localScale *= ScaleFactor;
+            spawned.tag = "PlacedObj";
 
             spawnedObjects[spawnedobjectcounter] = spawned;
             spawnedobjectcounter++;
@@ -183,5 +202,13 @@ public class PlaceLightSource : MonoBehaviour
         objectprefab = PreviewPrefabs[objectid];
 
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
+
+        objectPreview[0].layer = LayerMask.NameToLayer("Ignore Raycast");
+        //hope they have no recursive children...
+        for (int i = 0; i < objectPreview[0].transform.childCount; i++)
+        {
+            objectPreview[0].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+        objectPreview[0].transform.localScale *= ScaleFactor;
     }
 }
