@@ -34,10 +34,11 @@ Press the play button with the headset connected to start the app or deploy to t
 
 # Controls
 
-| **Binding**			| **Action**		        |
-|-----------------------|---------------------------|
-| Left Joystick			| Rotate Objects            |
-| Right Joystick        | Move Objects              |
-| Right Trigger			| Place Object              |
-| X                     | Switch between AR and VR  |
-| Y                     | Teleport					|
+| **Binding**			            | **Action**		        |
+|-----------------------------------|---------------------------|
+| Left Joystick	$\leftrightarrow$	| Rotate Objects            |
+| Left Joystick	$\updownarrow$		| Scale Objects             |
+| Right Joystick                    | Move Objects              |
+| Right Trigger			            | Place Object              |
+| X                                 | Switch between AR and VR  |
+| Y                                 | Teleport					|
