@@ -29,7 +29,7 @@ This repo uses a git submodule. Initialize/Update it with `git submodule update 
 
 Open the project Unity Editor 2022.3.23f1. Restart the project if prompted to by OVRPlugin.
 
-Once loaded, open the scene in `Assets/Scenes/Desktop Debug.unity`.
+Once loaded, open the scene in `Assets/Scenes/Room Scan.unity`.
 
 Press the play button with the headset connected to start the app. Alternativly deploy to the headset by switching to the Android platform (`File > Build Setting... > Android > Switch Platform`), followed by `Build` or `Build and Run` on the same window.
 
