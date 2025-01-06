@@ -9,7 +9,7 @@ public class WindowCutter : MonoBehaviour
 {
 
     // Start is called before the first frame update
- 
+
     void Start()
     {
         GameObject wallObject = this.transform.parent.gameObject;
@@ -30,7 +30,7 @@ public class WindowCutter : MonoBehaviour
             Destroy(windowCube);
             composite.transform.SetParent(this.transform);
 
-            FixPivot(composite, composite.transform.position);
+            FixPivot(composite, subtraction.mesh, wallCube.transform.position);
 
             wallCube = composite;
         }
@@ -39,10 +39,11 @@ public class WindowCutter : MonoBehaviour
 
     private static bool IsWindow(MRUKAnchor anchor)
         => anchor.Label == MRUKAnchor.SceneLabels.WINDOW_FRAME;
-    
-    private static void FixPivot(GameObject target, Vector3 targetPivot)
+
+    private static void FixPivot(GameObject target, Mesh mesh, Vector3 targetPivot)
     {
         ProBuilderMesh pbMesh = target.AddComponent<ProBuilderMesh>();
+        target.GetComponent<MeshFilter>().sharedMesh = mesh;
 
         var importer = new MeshImporter(target);
         importer.Import();
