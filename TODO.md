@@ -1,11 +1,11 @@
 - [ ] Remove Boundary (blue circle)
-- [ ] Attach UI to camera
-- [ ] Add additional prefabs for manual positioning
+- [x] Attach UI to camera
+- [x] Add additional prefabs for manual positioning
     - especially Lamps & Walls with Windows
 - [x] Scalable walls
 - [x] Teleport Keybind
-- [ ] Poster
+- [x] Poster
 - [ ] Environment
-- [ ] Fix Windows
-- [ ] Userstudy idea
+- [ ] Fix Windows (prototype on window_fix branch)
+- [x] Userstudy idea
 - [x] Remove camera turning with joystick
