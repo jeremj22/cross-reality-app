@@ -24,7 +24,7 @@ Support for development varies between operating systems. Windows is fully suppo
 
 This repo uses a git submodule. Initialize/Update it with `git submodule update --init --recursive`
 
-## Running the Unity project
+## Running the Unity Project
 
 Open the project Unity Editor 2022.3.23f1. Restart the project if prompted to by OVRPlugin.
 
