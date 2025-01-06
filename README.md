@@ -1,8 +1,9 @@
-# Cross Reality App
+# Cross Reality App for Meta Quest 3
 
-Project for the Mixed Reality lecture. The chosen topic is "Cross Reality Application"
+This project presents a Cross Reality (XR) application that combines Mixed Reality (MR) and Virtual Reality (VR) for simulating lighting in real-time. Users can design and visualize lighting by placing objects and light sources in an MR environment and viewing the effects in a virtual replica of the same space. The system uses automated room scanning and dynamic lighting, offering a tool that can be used for interior design and planning illumination of buildings. A user study highlighted its potential while suggesting improvements to the interface and functionality.
 
-*insert abstract here*
+<img src="Images/screensMR.png" alt="MR" width="400" />&nbsp;
+<img src="Images/screensVR.png" alt="VR" width="400" />
 
 ## Authors
 
