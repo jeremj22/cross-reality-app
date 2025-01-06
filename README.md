@@ -30,7 +30,7 @@ Open the project Unity Editor 2022.3.23f1. Restart the project if prompted to by
 
 Once loaded, open the scene in `Assets/Scenes/Desktop Debug.unity`.
 
-Press the play button with the headset connected to start the app or deploy to the headset by switching to the Android platform (`File > Build Setting... > Android > Switch Platform`), followed by `Build` or `Build and Run` on the same window.
+Press the play button with the headset connected to start the app. Alternativly to deploy to the headset by switching to the Android platform (`File > Build Setting... > Android > Switch Platform`), followed by `Build` or `Build and Run` on the same window.
 
 # Controls
 
