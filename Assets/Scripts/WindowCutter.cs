@@ -17,8 +17,8 @@ public class WindowCutter : MonoBehaviour
         MRUKAnchor wallAnchor = wallObject.GetComponent<MRUKAnchor>();
         foreach (MRUKAnchor childAnchor in wallAnchor.ChildAnchors.Where(IsWindow))
         {
-            GameObject windowprefab = childAnchor.transform.GetChild(0).gameObject;
-            GameObject windowCube = windowprefab.transform.GetChild(0).gameObject;
+            GameObject windowPrefab = childAnchor.transform.GetChild(0).gameObject;
+            GameObject windowCube = windowPrefab.transform.GetChild(0).gameObject;
 
             Model subtraction = CSG.Subtract(wallCube, windowCube);
 
