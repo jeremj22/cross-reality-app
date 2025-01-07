@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlaceLightSource : MonoBehaviour
@@ -44,8 +45,6 @@ public class PlaceLightSource : MonoBehaviour
     public LineRenderer rayLinePrefab;
     public Transform origin;
     public float startDist = 0.1f;
-    public float lineshowtimer = 1.0f;
-    public float collisionRadius = 0.1f;
 
     public bool floating = true;
 
@@ -57,6 +56,14 @@ public class PlaceLightSource : MonoBehaviour
     private GameObject[] objectPreview;
     private GameObject[] spawnedObjects;
     private int spawnedobjectcounter = 0;
+
+    private int state = 0;
+    /*
+     * 0: standby
+     * 1: place
+     * 2: erase
+     */
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,46 +76,64 @@ public class PlaceLightSource : MonoBehaviour
         line.positionCount = 2;
         allColliders = Physics.OverlapSphere(origin.position, 200);
         loc = new GameObject();
-        objectPreview[0] = Instantiate(objectprefab, loc.transform);
-        //objectPreview.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (floating)
+    {   
+        if (state == 0) { return; }
+        else if (state == 1)
         {
-            UpdateFloatingPlacement();
+            if (floating)
+            {
+                UpdateFloatingPlacement();
+            }
+            else
+            {
+                UpdateFloorPlacement();
+            }
         }
         else
         {
-            UpdateFloorPlacement();
+            UpdateDeleteMode();
+        }
+       
+    }
+    private void UpdateDeleteMode()
+    {
+        line.SetPosition(0, origin.position);
+        Vector3 endpoint = origin.position + origin.forward * startDist;
+        line.SetPosition(1, endpoint);
+
+        Vector2 joystick = OVRInput.Get(OVRInput.Axis2D.SecondaryThumbstick);
+        if (joystick.y != 0)
+        {
+            startDist += joystick.y * 0.05f;
         }
 
-        lightsources = GameObject.FindGameObjectsWithTag("Lightsource");
-        if (OVRInput.GetDown(_deletebutton))
+        if (OVRInput.GetDown(_button) && !hitsUI())
         {
-            foreach (GameObject l in lightsources)
+            RaycastHit hit;
+            GameObject obj;
+            if (Physics.Raycast(origin.position, origin.forward, out hit, startDist, LayerMask.GetMask("Default")))
             {
-                l.SetActive(false);
+                obj = hit.transform.GameObject();
+                if (obj.CompareTag("PlacedObj"))
+                {
+                    Destroy(obj);
+                }
             }
         }
     }
-
     public void UpdateFloatingPlacement()
     {
         line.SetPosition(0, origin.position);
         Vector3 endpoint = origin.position + origin.forward * startDist;
         loc.transform.position = endpoint;
-        RaycastHit hit;
-        if (Physics.Raycast(origin.position, endpoint - origin.position, out hit, startDist))
-        {
-            endpoint = hit.point;
-        }
 
         line.SetPosition(1, endpoint);
 
-        if (OVRInput.GetDown(_button))
+        if (OVRInput.GetDown(_button) && !hitsUI())
         {
             InstantiateObject(objectPreview[0].transform);
         }
@@ -129,7 +154,7 @@ public class PlaceLightSource : MonoBehaviour
 
         loc.transform.position = endpoint;
 
-        if (OVRInput.GetDown(_button))
+        if (OVRInput.GetDown(_button) && !hitsUI())
         {
             InstantiateObject(objectPreview[0].transform);
         }
@@ -154,12 +179,15 @@ public class PlaceLightSource : MonoBehaviour
     public void FloatingOff()
     {
         floating = false;
-        objectPreview[0].SetActive(true);
     }
     public void FloatingOn()
     {
         floating = true;
-        objectprefab = PreviewPrefabs[0];
+    }
+
+    private bool hitsUI()
+    {
+        return Physics.Raycast(origin.position, origin.forward, out RaycastHit hit, 10, LayerMask.GetMask("UI"));
     }
 
     public void InstantiateObject(Transform trans)
@@ -171,6 +199,7 @@ public class PlaceLightSource : MonoBehaviour
 
             var spawned = Instantiate(objectprefab, pos, rot);
             spawned.transform.localScale *= ScaleFactor;
+            spawned.tag = "PlacedObj";
 
             spawnedObjects[spawnedobjectcounter] = spawned;
             spawnedobjectcounter++;
@@ -180,8 +209,44 @@ public class PlaceLightSource : MonoBehaviour
     public void changeSpawnobject(int objectid)
     {
         Destroy(objectPreview[0]);
+
+        if (state == 1)
+        {  
+            //for reasons this does work but comparing indices does not?
+            if (objectprefab.Equals(PreviewPrefabs[objectid]))
+            {
+                line.gameObject.SetActive(false);
+                state = 0;
+                return;
+            }
+        }
+
+        line.gameObject.SetActive(true);
+        state = 1;
         objectprefab = PreviewPrefabs[objectid];
 
         objectPreview[0] = Instantiate(objectprefab, loc.transform);
+
+        objectPreview[0].layer = LayerMask.NameToLayer("Ignore Raycast");
+        //hope they have no recursive children...
+        for (int i = 0; i < objectPreview[0].transform.childCount; i++)
+        {
+            objectPreview[0].transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        }
+        ScaleFactor = 1.0f;      
+    }
+
+    public void deleteAllSpawnedObjects()
+    {
+        foreach (GameObject obj in spawnedObjects)
+        {
+            Destroy(obj);
+        }
+    }
+
+    public void setEraseState()
+    {
+        Destroy(objectPreview[0]);
+        state = state == 2 ? 0 : 2;
     }
 }
