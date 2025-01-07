@@ -23,14 +23,12 @@ public class WindowCutter : MonoBehaviour
             Model subtraction = CSG.Subtract(wallCube, windowCube);
 
             var composite = new GameObject("WindowCut");
-            composite.AddComponent<MeshFilter>().sharedMesh = subtraction.mesh;
-            composite.AddComponent<MeshRenderer>().sharedMaterials = subtraction.materials.ToArray();
 
             Destroy(wallCube);
             Destroy(windowCube);
             composite.transform.SetParent(this.transform);
 
-            FixPivot(composite, subtraction.mesh, wallCube.transform.position);
+            FixPivot(composite, subtraction, wallCube.transform.position);
 
             wallCube = composite;
         }
@@ -40,10 +38,13 @@ public class WindowCutter : MonoBehaviour
     private static bool IsWindow(MRUKAnchor anchor)
         => anchor.Label == MRUKAnchor.SceneLabels.WINDOW_FRAME;
 
-    private static void FixPivot(GameObject target, Mesh mesh, Vector3 targetPivot)
+    private static void FixPivot(GameObject target, Model model, Vector3 targetPivot)
     {
         ProBuilderMesh pbMesh = target.AddComponent<ProBuilderMesh>();
-        target.GetComponent<MeshFilter>().sharedMesh = mesh;
+
+        // Adding ProBuilderMesh also already puts those 2 there
+        target.GetComponent<MeshFilter>().sharedMesh = model.mesh;
+        target.GetComponent<MeshRenderer>().sharedMaterials = model.materials.ToArray();
 
         var importer = new MeshImporter(target);
         importer.Import();
