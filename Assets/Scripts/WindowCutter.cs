@@ -24,11 +24,12 @@ public class WindowCutter : MonoBehaviour
 
             var composite = new GameObject("WindowCut");
 
-            Destroy(wallCube);
-            Destroy(windowCube);
             composite.transform.SetParent(this.transform);
 
             FixPivot(composite, subtraction, wallCube.transform.position);
+
+            Destroy(wallCube);
+            Destroy(windowCube);
 
             wallCube = composite;
         }
