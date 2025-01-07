@@ -23,7 +23,6 @@ public class WindowCutter : MonoBehaviour
             Model subtraction = CSG.Subtract(wallCube, windowCube);
 
             var composite = new GameObject("WindowCut");
-
             composite.transform.SetParent(this.transform);
 
             FixPivot(composite, subtraction, wallCube.transform.position);
@@ -49,8 +48,6 @@ public class WindowCutter : MonoBehaviour
 
         var importer = new MeshImporter(target);
         importer.Import();
-
-        Debug.Log("ProBuilderMesh successfully imported from Unity Mesh.");
 
         // Convert the target pivot from world space to local space
         Vector3 localPivot = target.transform.InverseTransformPoint(targetPivot);
