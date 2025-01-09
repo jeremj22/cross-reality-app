@@ -25,7 +25,7 @@ public class WindowCutter : MonoBehaviour
             var composite = new GameObject("WindowCut");
 
             FixPivot(composite, subtraction, wallCube.transform.position);
-            composite.transform.SetParent(this.transform);
+            // composite.transform.SetParent(this.transform);
 
             Destroy(wallCube);
             Destroy(windowCube);
