@@ -23,9 +23,9 @@ public class WindowCutter : MonoBehaviour
             Model subtraction = CSG.Subtract(wallCube, windowCube);
 
             var composite = new GameObject("WindowCut");
-            composite.transform.SetParent(this.transform);
 
             FixPivot(composite, subtraction, wallCube.transform.position);
+            composite.transform.SetParent(this.transform);
 
             Destroy(wallCube);
             Destroy(windowCube);
