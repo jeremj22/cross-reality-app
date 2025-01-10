@@ -11,9 +11,10 @@ This project presents a Cross Reality (XR) application that combines Mixed Reali
 - Simon Ebner (ebners@ethz.ch)
 - Laura Nydegger (nylaura@ethz.ch)
 
-## Documents
+## Deliverables
 
 - [Final Report](Deliverables/MR_Project_Report.pdf)
+- [Trailer](Deliverables/Simulating%20Illumination%20in%20Mixed%20Reality.mp4)
 
 # Installation
 
