@@ -6,6 +6,6 @@
 - [x] Teleport Keybind
 - [x] Poster
 - [ ] Environment
-- [ ] Fix Windows (prototype on window_fix branch)
+- [x] Fix Windows
 - [x] Userstudy idea
 - [x] Remove camera turning with joystick

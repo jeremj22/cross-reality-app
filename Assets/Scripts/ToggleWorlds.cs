@@ -1,6 +1,5 @@
 using Meta.XR.MRUtilityKit;
 using Oculus.Interaction;
-using System.Linq;
 using UnityEngine;
 
 public class ToggleWorlds : MonoBehaviour, IActiveState
@@ -10,7 +9,7 @@ public class ToggleWorlds : MonoBehaviour, IActiveState
 
     [SerializeField]
     private OVRInput.Controller _controller = OVRInput.Controller.Touch;
-    
+
     [SerializeField]
     private OVRManager _manager;
 
@@ -31,14 +30,14 @@ public class ToggleWorlds : MonoBehaviour, IActiveState
         {
             if (value == _isVirtual)
                 return;
-            
+
             _isVirtual = value;
             OnToggle(value);
         }
     }
-    
+
     /// <summary>
-    /// Implement interface and pass along virtuallity to disable TP in AR
+    /// Implement interface and pass along virtuality to disable TP in AR
     /// </summary>
     public bool Active => IsVirtual;
 
@@ -59,7 +58,7 @@ public class ToggleWorlds : MonoBehaviour, IActiveState
 
         if (!down)
             return;
-        
+
         IsVirtual = !IsVirtual;
     }
 
@@ -67,7 +66,7 @@ public class ToggleWorlds : MonoBehaviour, IActiveState
         => IsVirtual = !IsVirtual;
 
     private void SetVisibilities(bool isVirtual)
-        => _roomTracker.Rooms.Single().Anchors.ForEach(a => a.gameObject.SetActive(isVirtual));
+        => _roomTracker.Rooms.ForEach(a => a.gameObject.SetActive(isVirtual));
 
     void OnToggle(bool isVirtual)
     {
