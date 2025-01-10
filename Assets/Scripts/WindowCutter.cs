@@ -9,13 +9,13 @@ public class WindowCutter : MonoBehaviour
 {
 
     // Start is called before the first frame update
-
     void Start()
     {
         GameObject wallObject = this.transform.parent.gameObject;
         GameObject wallCube = this.transform.GetChild(0).gameObject;
         MRUKAnchor wallAnchor = wallObject.GetComponent<MRUKAnchor>();
-        foreach (MRUKAnchor childAnchor in wallAnchor.ChildAnchors.Where(IsWindow))
+        var windows = wallAnchor.ChildAnchors.Where(IsWindow);
+        foreach (MRUKAnchor childAnchor in windows)
         {
             GameObject windowPrefab = childAnchor.transform.GetChild(0).gameObject;
             GameObject windowCube = windowPrefab.transform.GetChild(0).gameObject;
@@ -25,13 +25,15 @@ public class WindowCutter : MonoBehaviour
             var composite = new GameObject("WindowCut");
 
             FixPivot(composite, subtraction, wallCube.transform.position);
-            // composite.transform.SetParent(this.transform);
 
             Destroy(wallCube);
             Destroy(windowCube);
 
             wallCube = composite;
         }
+
+        if (windows.Any())
+            wallCube.transform.SetParent(wallAnchor.Room.transform);
 
     }
 
