@@ -5,8 +5,6 @@ This project presents a Cross Reality (XR) application that combines Mixed Reali
 <img src="Images/screensMR.png" alt="MR" width="400" />&nbsp;
 <img src="Images/screensVR.png" alt="VR" width="400" />
 
-![Trailer](Deliverables/Simulating%20Illumination%20in%20Mixed%20Reality.mp4)
-
 ## Authors
 
 - Jeremy Bitar (bitarj@ethz.ch)
